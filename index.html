@@ -18,8 +18,44 @@
   </head>
   <body>
     <div class="container">
-      <p>How much was your bill?</p>
-      <input type="number" id="bill-amount" placeholder="Bill amount $" />
+      <div class="top">
+        <div class="wrapper">
+          <p class="text">Bill</p>
+          <input type="number" id="bill-amount" />
+        </div>
+        <div class="wrapper">
+          <p class="text">Tip</p>
+          <p class="text">0.00</p>
+        </div>
+        <div class="total">
+          <div class="wrapper">
+            <p class="text">Total</p>
+            <p class="text">0.00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <div class="wrapper">
+          <p class="text">Tip</p>
+          <p class="text">0.00</p>
+        </div>
+        
+        <div class="wrapper">
+          <p class="text">Split</p>
+          <p class="text" id="demo"></p>
+        </div>
+        <div class="wrapper">
+        <input type="range" min="1" max="10" value="50" class="slider" id="myRange">
+      </div>
+        <div class="total">
+          <div class="wrapper">
+            <p class="text-split">Split total</p>
+            <p class="text">0.00</p>
+          </div>
+        </div>
+
+      </div>
 
       <label for="pet-select">How was your service?</label>
 
@@ -37,7 +73,7 @@
 
       <button id="calculate">Calculate</button>
 
-      <div class="tip-amount">
+      <div id="tip-amount">
         <h3>TIP amount</h3>
         <sup>$</sup><span id="tip">0.00</span>
         <p>each</p>
