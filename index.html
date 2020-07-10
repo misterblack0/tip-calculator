@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <p>How much was your bill?</p>
+      <input type="number" id="bill-amount" placeholder="Bill amount $" />
+
+      <label for="pet-select">How was your service?</label>
+
+      <select name="tip" id="service-tip">
+        <option value="">--Please choose an option--</option>
+        <option value="0.3">30% - Outstanding</option>
+        <option value="0.2">20% - Good</option>
+        <option value="0.15">15% - It was OK</option>
+        <option value="0.1">10% - Bad</option>
+        <option value="0.05">5% - Terrible</option>
+      </select>
+
+      <p>How many people are sharing the bill?</p>
+      <input type="number" id="people" placeholder="Number of people" />
+
+      <button id="calculate">Calculate</button>
+
+      <div class="tip-amount">
+        <h3>TIP amount</h3>
+        <sup>$</sup><span id="tip">0.00</span>
+        <p>each</p>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
