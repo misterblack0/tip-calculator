@@ -1,46 +1,36 @@
-const btn = document.querySelector("#calculate");
-const closeBtn = document.querySelector(".closebtn");
-const billAmount = document.querySelector("#bill-amount");
-const tipSlider = document.querySelector("#tipRange");
-const tipOutput = document.querySelector("#tip");
-const splitSlider = document.querySelector("#splitRange");
-const splitOutput = document.querySelector("#split");
+const count = document.getElementById("count");
+const input = document.getElementById("input");
+var globalWordCounter = 0;
 
-tipOutput.textContent = tipSlider.value;
-splitOutput.textContent = splitSlider.value;
+input.addEventListener("keyup", function (e) {
+  wordCounter(e.target.value);
+});
 
-tipSlider.oninput = function () {
-  tipOutput.textContent = this.value + "%";
-};
-
-splitSlider.oninput = function () {
-  splitOutput.textContent = this.value;
-};
-
-function calculate() {
-  let total = 0;
-  let billTotal = 0;
-  let splitTotal = 0;
-  total = (billAmount.value * tipSlider.value) / (splitSlider.value * 100);
-  billTotal =
-    (billAmount.value * tipSlider.value) / 100 + Number(billAmount.value);
-  splitTotal = billTotal / splitSlider.value;
-  billTotal = Math.round(billTotal * 100) / 100;
-  billTotal = billTotal.toFixed(2);
-  splitTotal = Math.round(splitTotal * 100) / 100;
-  splitTotal = splitTotal.toFixed(2);
-
-  document.querySelector("#bill-total").textContent = billTotal;
-  document.querySelector("#split-total").textContent = splitTotal;
-
-  if (billAmount.value === "") {
-    document.querySelector(".alert").style.display = "block";
-    return;
+function isWord(str) {
+  var alphaNumericFound = false;
+  for (var i = 0; i < str.length; i++) {
+    var code = str.charCodeAt(i);
+    if (
+      (code > 47 && code < 58) || // numeric (0-9)
+      (code > 64 && code < 91) || // upper alpha (A-Z)
+      (code > 96 && code < 123)
+    ) {
+      // lower alpha (a-z)
+      alphaNumericFound = true;
+      return alphaNumericFound;
+    }
   }
+  return alphaNumericFound;
 }
 
-btn.addEventListener("click", calculate);
-
-closeBtn.addEventListener("click", function () {
-  this.parentElement.style.display = "none";
-});
+function wordCounter(text) {
+  var text = input.value.split(" ");
+  var wordCount = 0;
+  for (var i = 0; i < text.length; i++) {
+    if (!text[i] == " " && isWord(text[i])) {
+      wordCount++;
+    }
+  }
+  globalWordCounter = wordCount;
+  count.innerText = wordCount;
+}
